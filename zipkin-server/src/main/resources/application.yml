@@ -1,0 +1,29 @@
+--- 
+eureka: 
+  client: 
+    serviceUrl: 
+      defaultZone: "http://localhost:8761/eureka/"
+server: 
+  port: 9411
+spring: 
+  application: 
+    name: zipkin-server
+  cloud: 
+    stream: 
+      kafka: 
+        binder: 
+          brokers: "localhost:9092"
+          zkNodes: "localhost:2181"
+  sleuth: 
+    enabled: false
+zipkin: 
+  storage: 
+    StorageComponent: elasticsearch
+    elasticsearch: 
+      cluster: elasticsearch
+      hosts: "https://search-operr-v3-zipkin-b7wnki5apgp5nbiuv5qeqc6u5i.us-east-1.es.amazonaws.com/"
+      index: zipkin
+      index-replicas: 1
+      index-shards: 3
+      max-requests: 30
+    type: elasticsearch
